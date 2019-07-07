@@ -1,0 +1,13 @@
+	   MOBIL	  |	     MOTOR	    |    LAMPU LALU LINTAS
+-----------------------------------------------------------
+       SEDIKIT    |     SEDIKIT     |         SEBENTAR
+       LUMAYAN    |     SEDIKIT     |	      SEDANG
+       BANYAK     |     SEDIKIT     |         LAMA
+
+       SEDIKIT    |     LUMAYAN     |         SEDANG
+       LUMAYAN    |     LUMAYAN     |	      SEDANG
+       BANYAK     |     LUMAYAN     |         LAMA
+
+       SEDIKIT    |     BANYAK      |         LAMA
+       LUMAYAN    |     BANYAK      |	      LAMA
+       BANYAK     |     BANYAK      |         LAMA

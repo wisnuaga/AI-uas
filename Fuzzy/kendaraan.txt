@@ -1,0 +1,65 @@
+mobil = 3 x 5 meter -> (sedikit, lumayan, banyak)
+motor = 1.5 x 2.5 meter -> (sedikit, lumayan, banyak)
+
+Keterangan :
+•	Sedikit : Jumlah kendaraan (mobil / motor) memenuhi < 25% suatu simpang jalan.
+•	Sedang : Jumlah kendaraan (mobil / motor) memenuhi < 75% suatu simpang jalan.
+•	Banyak : Jumlah kendaraan (mobil / motor) memenuhi > 75% suatu simpang jalan.
+•	Tidak ada : Tidak ada kendaraan (mobil / motor) pada suatu simpang jalan.
+•	Sebentar : 0 – 40 (detik)
+•	Sedang : 40 – 80 (detik)
+•	Lama : 80 – 120 (detik)
+
+================================================================
+# GRAFIK MOBIL (mobil_sedikit, mobil_lumayan, mobil_banyak)
+
+u(mobil_sedikit) = 0
+if x >= 20
+u(mobil_sedikit) = 1
+if x == 0
+u(mobil_sedikit) = (20 - x) / (20 - 0)
+if 0 < x < 20
+
+u(mobil_lumayan) = 0
+if 10 >= x or x >= 50
+u(mobil_lumayan) = 1
+if x == 30
+u(mobil_lumayan) = (x - 10) / (30 - 10)
+if 10 < x < 30
+u(mobil_lumayan) = (50 - x) / (50 - 30)
+if 30 < x < 50
+
+u(mobil_banyak) = 0
+if x <= 40
+u(mobil_banyak) = 1
+if x >= 60
+u(mobil_banyak) = (x - 40) / (60 - 40)
+if 40 < x < 60
+
+================================================================
+# GRAFIK MOTOR (motor_sedikit, motor_lumayan, motor_banyak)
+
+u(motor_sedikit) = 0
+if x >= 40
+u(motor_sedikit) = 1
+if x == 0
+u(motor_sedikit) = (40 - x) / (40 - 0)
+if 0 < x < 40
+
+u(motor_lumayan) = 0
+if 20 >= x or x >= 100
+u(motor_lumayan) = 1
+if x == 60
+u(motor_lumayan) = (x - 20) / (60 - 20)
+if 20 < x < 60
+u(motor_lumayan) = (100 - x) / (100 - 60)
+if 60 < x < 100
+
+u(motor_banyak) = 0
+if x <= 80
+u(motor_banyak) = 1
+if x >= 120
+u(motor_banyak) = (x - 80) / (120 - 80)
+if 80 < x < 120
+
+================================================================

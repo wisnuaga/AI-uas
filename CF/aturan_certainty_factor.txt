@@ -1,0 +1,11 @@
+Certainty Factor
+=============================
+Sepenuhnya tidak, {cf = -1}
+Hampir pasti tidak, {cf = -0.8}
+Mungkin tidak, {cf = -0.6}
+Sepertinya tidak, {cf = -0.4}
+Tidak tahu, {cf = -0.2 sampai +0.2}
+Mungkin, {cf = +0.4}
+Yakin, {cf = +0.6}
+Hampir pasti ya, {cf = +0.8}
+Sepenuhnya ya, {cf = + 1}

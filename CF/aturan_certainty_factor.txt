@@ -9,3 +9,11 @@ Mungkin, {cf = +0.4}
 Yakin, {cf = +0.6}
 Hampir pasti ya, {cf = +0.8}
 Sepenuhnya ya, {cf = + 1}
+
+ATURAN YANG DIGUNAKAN
+=============================
+YA (CF = 1)
+MUNGKIN YA (CF = 0.6)
+TIDAK TAHU (CF = 0.1)
+MUNGKIN TIDAK (CF = -0.6)
+TIDAK (CF = -1)

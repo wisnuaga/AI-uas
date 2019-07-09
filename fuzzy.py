@@ -1,3 +1,13 @@
+def AND(a, b):
+    if a < b :
+        return a
+    return b
+
+def OR(a, b):
+    if a > b:
+        return a
+    return b
+
 def mobil_sedikit(x):
     if x >= 20:
         return "sedikit", 0
@@ -58,25 +68,25 @@ def jml_motor(x):
 
 def aturan(mobil, motor):
     if mobil[0] == "sedikit" and motor[0] == "sedikit":
-        return "sebentar", (mobil[1] and motor[1])
+        return "sebentar", (AND(mobil[1], motor[1]))
     if mobil[0] == "lumayan" and motor[0] == "sedikit":
-        return "sedang", (mobil[1] and motor[1])
+        return "sedang", (AND(mobil[1], motor[1]))
     if mobil[0] == "banyak" and motor[0] == "sedikit":
-        return "lama", (mobil[1] and motor[1])
+        return "lama", (AND(mobil[1], motor[1]))
 
     if mobil[0] == "sedikit" and motor[0] == "lumayan":
-        return "sedang", (mobil[1] and motor[1])
+        return "sedang", (AND(mobil[1], motor[1]))
     if mobil[0] == "lumayan" and motor[0] == "lumayan":
-        return "sedang", (mobil[1] and motor[1])
+        return "sedang", (AND(mobil[1], motor[1]))
     if mobil[0] == "banyak" and motor[0] == "lumayan":
-        return "lama", (mobil[1] and motor[1])
+        return "lama", (AND(mobil[1], motor[1]))
 
     if mobil[0] == "sedikit" and motor[0] == "banyak":
-        return "lama", (mobil[1] and motor[1])
+        return "lama", (AND(mobil[1], motor[1]))
     if mobil[0] == "lumayan" and motor[0] == "banyak":
-        return "lama", (mobil[1] and motor[1])
+        return "lama", (AND(mobil[1], motor[1]))
     if mobil[0] == "banyak" and motor[0] == "banyak":
-        return "lama", (mobil[1] and motor[1])
+        return "lama", (AND(mobil[1], motor[1]))
 
 def durasi_lampu(jml_mobil, jml_motor):
     sebentar = ["sebentar", 0]
@@ -85,7 +95,10 @@ def durasi_lampu(jml_mobil, jml_motor):
 
     for mobil in jml_mobil:
         for motor in jml_motor:
+
             temp = aturan(mobil, motor)
+            print("mobil: " + str(mobil) + " | motor: " + str(motor) + " -> " + str(temp))
+
             if temp[1] != 0:
                 if temp[0] == sebentar[0] and temp[1] > sebentar[1]:
                     sebentar[1] = temp[1]
@@ -96,29 +109,30 @@ def durasi_lampu(jml_mobil, jml_motor):
 
     return sebentar, sedang, lama
 
-def defuzzifiasi_madani(lampu_lalu_lintas):
+def defuzzifikasi(lampu_lalu_lintas):
     a, b, c = lampu_lalu_lintas
+
+    # sebentar = (5 + 10 + 15 + 20 + 25 + 30 + 35) * a[1]
+    # sedang = (25 + 30 + 35 + 40 + 45 + 50 + 55
+    #         + 65 + 70 + 75 + 80 + 85 + 90 + 95) * b[1]
+    # lama = (85 + 90 + 95 + 100 + 105 + 110 + 115) * c[1]
+    # pembagi = (7 * a[1]) + (14 * b[1]) + (7 * c[1])
+
     sebentar = (5 + 10 + 15 + 20 + 25 + 30 + 35) * a[1]
-    sedang = (25 + 30 + 35 + 40 + 45 + 50 + 55
-            + 65 + 70 + 75 + 80 + 85 + 90 + 95) * b[1]
+    sedang = (25 + 35 + 45 + 55 + 65 + 75 + 85 ) * b[1]
     lama = (85 + 90 + 95 + 100 + 105 + 110 + 115) * c[1]
-    pembagi = (7 * a[1]) + (14 * b[1]) + (7 * c[1])
+    pembagi = (7 * a[1]) + (7 * b[1]) + (7 * c[1])
 
     durasi_lampu = (sebentar + sedang + lama) / pembagi
 
     return round(durasi_lampu)
 
-mobil = 54
-motor = 112
+mobil = 11
+motor = 23
 
 get_mobil = jml_mobil(mobil)
 get_motor = jml_motor(motor)
 
 lampu_lalu_lintas = durasi_lampu(get_mobil, get_motor)
-durasi = defuzzifiasi_madani(lampu_lalu_lintas)
+durasi = defuzzifikasi(lampu_lalu_lintas)
 print(durasi)
-
-for mobil in get_mobil:
-    for motor in get_motor:
-        temp = aturan(mobil, motor)
-        print("mobil: " + str(mobil) + " | motor: " + str(motor) + " -> " + str(temp))
